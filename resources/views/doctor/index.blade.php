@@ -18,11 +18,9 @@
       <thead class="thead-colored thead-primary">
         <tr>
           <th class="wd-5p">ID</th>
-          <th class="wd-7p">NOMBRE</th>
-          <th class="wd-7p">APELLIDOS</th>
-          <th class="wd-7p">CI</th>
-          <th class="wd-7p">CELULAR</th>
-          <th class="wd-7p">DIRECCION</th>
+          <th class="wd-7p">Nombre</th>
+          <th class="wd-7p">Especialidad</th> 
+          <th class="wd-7p">ACCION</th>
           <th class="wd-7p">ACCION</th> 
         </tr>
       </thead>
@@ -30,10 +28,7 @@
         <tr>
           <th scope="row">1</th>
           <td>Fátima </td>
-          <td>Chamo Masai</td>
-          <td>12566956</td>
-          <td>75304552 </td>
-          <td>4to Anillo 3 Pasos al Frente  </td>
+          <td>Ortodoncia</td> 
           <td>
           <button class="btn btn-purple">ver</button> | <button class="btn btn-warning">Editar</button>| <button class="btn btn-danger">Eliminar</button>
 

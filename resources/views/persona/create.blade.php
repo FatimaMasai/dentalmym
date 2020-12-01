@@ -8,6 +8,7 @@
         <form action="{{route('persona.store')}}" method="post">
             @csrf
             <div class="form-layout form-layout-1">
+          
                 <div class="row mg-b-25">
                     <div class="col-lg-4">
                         <div class="form-group">
@@ -17,22 +18,50 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">Apellidos: <span class="tx-danger">*</span></label>
+                            <label class="form-control-label">Apellido Paterno: <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text">
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
+                            <label class="form-control-label">Apellido Materno: <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text"  >
                         </div>
                     </div> 
-                    <div class="col-lg-8">
-                        <div class="form-group mg-b-10-force">
-                            <label class="form-control-label">Dirección: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text" >
+                </div>
+                <div class="row mg-b-25">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label">Sexo: <span class="tx-danger">*</span></label>
+                            <input class="form-control" type="text"  >
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label">Fecha Nac.: <span class="tx-danger">*</span></label>
+                            <input class="form-control" type="date">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label">Celular: <span class="tx-danger">*</span></label>
+                            <input class="form-control" type="text"  >
                         </div>
                     </div> 
+                </div>
+                <div class="row mg-b-25">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label">Correo: <span class="tx-danger">*</span></label>
+                            <input class="form-control" type="text"  >
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label">Numero Doc.: <span class="tx-danger">*</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
                     <div class="col-lg-4">
                         <div class="form-group mg-b-10-force">
                         <label class="form-control-label">Tipo Documento: <span class="tx-danger">*</span></label>
@@ -41,8 +70,9 @@
                         <option value="UK">Pasaporte</option>
                         <option value="China">Licencia </option> 
                         </select>
-                    </div>
+                    </div>  
                 </div> 
+                
             </div> 
             <div class="form-layout-footer">
                 <button class="btn btn-info tx-center"> <i class="menu-item-icon icon ion-android-send  tx-14"> </i>Guardar</button> 

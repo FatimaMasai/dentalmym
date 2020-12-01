@@ -11,37 +11,16 @@
                 <div class="row mg-b-25">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">Nombres: <span class="tx-danger">*</span></label>
+                            <label class="form-control-label">Nombre: <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text"  >
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">Apellidos: <span class="tx-danger">*</span></label>
+                            <label class="form-control-label">Especialidad: <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text">
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text"  >
-                        </div>
                     </div> 
-                    <div class="col-lg-8">
-                        <div class="form-group mg-b-10-force">
-                            <label class="form-control-label">Dirección: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text" >
-                        </div>
-                    </div> 
-                    <div class="col-lg-4">
-                        <div class="form-group mg-b-10-force">
-                        <label class="form-control-label">Tipo Documento: <span class="tx-danger">*</span></label>
-                        <select class="form-control select2" data-placeholder="Cédula Identidad">
-                        <option label="Cédula Identidad"></option> 
-                        <option value="UK">Pasaporte</option>
-                        <option value="China">Licencia </option> 
-                        </select>
-                    </div>
                 </div> 
             </div> 
             <div class="form-layout-footer">

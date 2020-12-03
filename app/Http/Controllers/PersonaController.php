@@ -14,7 +14,8 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        return view('persona.index');
+        $persona = Persona::where('estado',1)->orderBy('id', 'Desc')->paginate(10);
+        return view('persona.index')->with('persona',$persona);
     }
 
     /**
@@ -35,7 +36,10 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $persona= new persona($request->all());
+        $persona->save();
+        return redirect()->route('persona.index');
+
     }
 
     /**
@@ -46,7 +50,8 @@ class PersonaController extends Controller
      */
     public function show($id)
     {
-        //
+        $persona = Persona::find($id);
+        return view('persona.show')->with('persona', $persona);
     }
 
     /**
@@ -57,7 +62,8 @@ class PersonaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $persona = persona::find($id);
+        return view('persona.edit')->with('persona', $persona);
     }
 
     /**
@@ -67,9 +73,14 @@ class PersonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+  
     public function update(Request $request, $id)
     {
-        //
+        $persona = Persona::find($id); 
+        $persona = $persona->fill($request->all());
+        $persona->save();
+        return redirect()->route('persona.index');
+
     }
 
     /**
@@ -80,6 +91,8 @@ class PersonaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $persona = persona::find($id);
+        $persona->update(['estado'=>0]);
+        return redirect()->route('persona.index');
     }
 }

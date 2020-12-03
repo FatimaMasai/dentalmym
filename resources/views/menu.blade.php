@@ -1,7 +1,7 @@
 <div class="br-sideleft overflow-y-auto">
         <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
         <div class="br-sideleft-menu">
-          <a href="#" class="br-menu-link active">
+          <a href="{{route('panel.index')}}" class="br-menu-link active">
             <div class="br-menu-item">
               <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
               <span class="menu-item-label">INICIO</span>
@@ -36,10 +36,10 @@
             </div>
             <!-- menu-item -->
           </a>
-          <a href="#" class="br-menu-link">
+          <a href="{{route('tipoproducto.index')}}" class="br-menu-link">
             <div class="br-menu-item">
               <i class="menu-item-icon icon ion-clipboard tx-24"></i>
-              <span class="menu-item-label">Agenda </span>
+              <span class="menu-item-label">Tipo Producto </span>
             </div>
             <!-- menu-item -->
           </a>
@@ -51,7 +51,7 @@
             <!-- menu-item -->
           </a>
           <!-- br-menu-link -->
-          <a href="#" class="br-menu-link">
+          <a href="{{route('tiposervicio.index')}}" class="br-menu-link">
             <div class="br-menu-item">
               <i class="menu-item-icon icon ion-ios-list tx-24"></i>
               <span class="menu-item-label">Tipo Servicio</span>
@@ -97,7 +97,7 @@
           <!-- br-menu-link -->
           <ul class="br-menu-sub nav flex-column">
             <li class="nav-item"><a href="accordion.html" class="nav-link">Producto</a></li>
-            <li class="nav-item"><a href="alerts.html" class="nav-link">Tipo Producto</a></li>
+            <li class="nav-item"><a href="{{route('tipoproducto.index')}}" class="nav-link">Tipo Producto</a></li>
             <li class="nav-item"><a href="buttons.html" class="nav-link">Detalle Compra</a></li>
             <li class="nav-item"><a href="cards.html" class="nav-link">Compra</a></li>
             <li class="nav-item"><a href="icons.html" class="nav-link">Inventario </a></li>

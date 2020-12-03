@@ -5,79 +5,82 @@
     <div class="br-section-wrapper">
         <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Agregar Persona</h6>
         <p class="mg-b-30 tx-gray-600"> </p>
-        <form action="{{route('persona.store')}}" method="post">
+        <form action="{{route('persona.store')}}" method="POST">
             @csrf
             <div class="form-layout form-layout-1">
-          
-                <div class="row mg-b-25">
+                <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label">Nombres: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text"  >
+                            <input class="form-control" name="nombre" required type="text"  >
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label">Apellido Paterno: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text">
+                            <input class="form-control" name="apellido_pat" required type="text">
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label">Apellido Materno: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text"  >
+                            <input class="form-control" name="apellido_mat" required type="text"  >
                         </div>
                     </div> 
                 </div>
-                <div class="row mg-b-25">
+                <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">Sexo: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text"  >
+                            <label class="form-control-label">Fecha Nac.: <span class="tx-danger">*</span></label>
+                            <input class="form-control" name="fecha_nac" required type="date"  >
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">Fecha Nac.: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="date">
+                            <label class="form-control-label">Tipo Doc.: <span class="tx-danger">*</span></label>
+                            <input class="form-control" name="tipo_doc" required type="text">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label">Cédula Identidad: <span class="tx-danger">*</span></label>
+                            <input class="form-control" name="numero_doc" required type="number"  >
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label">sexo: <span class="tx-danger">*</span></label>
+                            <input class="form-control" name="sexo" required type="text"  >
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label">Celular: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text"  >
+                            <input class="form-control" name="celular" required type="number">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
+                            <input class="form-control" name="email" required type="text">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label">Direccion: <span class="tx-danger">*</span></label>
+                            <input class="form-control" name="direccion" required type="text">
                         </div>
                     </div> 
-                </div>
-                <div class="row mg-b-25">
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <label class="form-control-label">Correo: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text"  >
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <label class="form-control-label">Numero Doc.: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text">
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group mg-b-10-force">
-                        <label class="form-control-label">Tipo Documento: <span class="tx-danger">*</span></label>
-                        <select class="form-control select2" data-placeholder="Cédula Identidad">
-                        <option label="Cédula Identidad"></option> 
-                        <option value="UK">Pasaporte</option>
-                        <option value="China">Licencia </option> 
-                        </select>
-                    </div>  
                 </div> 
                 
             </div> 
             <div class="form-layout-footer">
-                <button class="btn btn-info tx-center"> <i class="menu-item-icon icon ion-android-send  tx-14"> </i>Guardar</button> 
-                <button class="btn btn-secondary">Cancel</button>
-                <a href="javascript:history.back()">Ir al listado</a>
+                <input type="submit" class="btn btn-primary" value="Guardar">
+                <button class="btn btn-[teal]" >
+                <a href="javascript:history.back()"   >Cancelar</a>
+                </button>  
             </div> 
         </form>
     </div> 

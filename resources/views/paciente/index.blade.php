@@ -18,27 +18,30 @@
       <thead class="thead-colored thead-primary">
         <tr>
           <th class="wd-5p">ID</th>  
-          <th class="wd-7p">ALERGIA</th>
+          <th class="wd-7p">PACIENTE</th>
           <th class="wd-7p">OBSERVACION</th>
-          <th class="wd-7p">RECOMENDACION</th>
-          <th class="wd-7p">RESPONSABLE</th>
+          <th class="wd-7p">ALERGIA</th>
+          <th class="wd-7p">RECOMENDADO</th>
           <th class="wd-7p">ANTECEDENTES</th>
           <th class="wd-7p">ACCION</th> 
         </tr>
       </thead>
       <tbody>
+      @foreach($paciente as $pacient)
         <tr>
-          <th scope="row">1</th>
-          <td>Ninguna </td>
-          <td>Dolor de muela del juicio</td>
-          <td>Maria Rojas</td>
-          <td> Ninguna</td> 
-          <td>Ninguna  </td> 
-          <td>
-          <button class="btn btn-purple">ver</button> | <button class="btn btn-warning">Editar</button>| <button class="btn btn-danger">Eliminar</button>
-
+          <th scope="row">{{$pacient ->id}}</th>
+          <td>{{$pacient->persona->nombre}} {{$pacient->persona->apellido_pat}} {{$pacient->persona->apellido_mat}} </td>
+          <td>{{$pacient->observacion}} </td>
+          <td>{{$pacient->alergia}} </td>
+          <td>{{$pacient->recomendado}} </td> 
+          <td>{{$pacient->antecedentes}}   </td> 
+          <td> 
+            <a href="{{route('paciente.edit', $pacient->id)}}" class="btn btn-success" >Editar</a>
+            <a href="{{route('paciente.show', $pacient->id)}}" class="btn btn-primary" >Ver</a>
+                                           
           </td>
         </tr> 
+        @endforeach
       </tbody>
     </table>
   </div><!-- table-responsive -->

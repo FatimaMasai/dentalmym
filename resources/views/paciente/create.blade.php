@@ -11,32 +11,43 @@
                 <div class="row mg-b-25">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">Alergia: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text"  >
+                            <label for="x_card_code" class="control-label mb-1">  PACIENTE</label>
+                                <select name="id_persona" id="id_persona" class="form-control">
+                                <option value=" "> SELECCIONAR </option> 
+                                    @foreach($persona as $person)
+                                    <option value="{{$person->id}}">{{$person->nombre}} {{$person->apellido_pat}} {{$person->apellido_mat}} </option>
+                                    @endforeach 
+                                </select>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">Observación: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text">
+                            <label class="form-control-label">ALERGIA: <span class="tx-danger">*</span></label>
+                            <input class="form-control" name="alergia" type="text"  >
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">Recomendación: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text"  >
+                            <label class="form-control-label">OBSERVACION: <span class="tx-danger">*</span></label>
+                            <input class="form-control" name="observacion" type="text">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label">RESPONSABLE: <span class="tx-danger">*</span></label>
+                            <input class="form-control" name="responsable" type="text"  >
                         </div>
                     </div> 
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">Responsable: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text" >
+                            <label class="form-control-label">ANTECEDENTES: <span class="tx-danger">*</span></label>
+                            <input class="form-control" name="antecedentes" type="text" >
                         </div>
                     </div> 
                     <div class="col-lg-4">
                         <div class="form-group">
-                        <label class="form-control-label">Antecedentes: <span class="tx-danger">*</span></label>
-                        <input class="form-control" type="text" >
+                        <label class="form-control-label">RECOMENDADO: <span class="tx-danger">*</span></label>
+                        <input class="form-control" name="recomendado" type="text" >
                     </div>
                 </div> 
             </div> 

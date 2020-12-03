@@ -5,6 +5,9 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\TipoServicioController;
+use App\Http\Controllers\TipoProductoController;
+use App\Http\Controllers\PanelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,3 +33,6 @@ Route::resource('/persona', PersonaController::class);
 Route::resource('/paciente', PacienteController::class);
 Route::resource('/doctor', DoctorController::class); 
 Route::resource('/proveedor', ProveedorController::class);
+Route::resource('/tiposervicio', TipoServicioController::class);
+Route::resource('/tipoproducto', TipoProductoController::class);
+Route::resource('/panel', PanelController::class);

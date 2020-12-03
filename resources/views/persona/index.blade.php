@@ -25,22 +25,28 @@
           <th class="wd-7p">DIRECCION</th>
           <th class="wd-7p">ACCION</th> 
         </tr>
-      </thead>
+      </thead> 
       <tbody>
+      @foreach ($persona as $person)
         <tr>
-          <th scope="row">1</th>
-          <td>Fátima </td>
-          <td>Chamo Masai</td>
-          <td>12566956</td>
-          <td>75304552 </td>
-          <td>4to Anillo 3 Pasos al Frente  </td>
-          <td>
-          <button class="btn btn-purple">ver</button> | <button class="btn btn-warning">Editar</button>| <button class="btn btn-danger">Eliminar</button>
-
+          <th scope="row">{{$person->id}}</th> 
+          <td> {{$person->nombre}} </td>
+          <td> {{$person->apellido_pat.' '.$person->apellido_mat}}</td>
+          <td> {{$person->numero_doc}} </td>
+          <td> {{$person->celular}} </td>
+          <td> {{$person->direccion}} </td>
+          <td> 
+            <a href="{{route('persona.edit', $person->id)}}" class="btn btn-success" >Editar</a>
+            <a href="{{route('persona.show', $person->id)}}" class="btn btn-primary" >Ver</a>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_delete-{{$person->id}}">
+                Eliminar
+            </button>                                
           </td>
         </tr> 
+        @include('persona.delete')
+        @endforeach
       </tbody>
-    </table>
+    </table> 
   </div><!-- table-responsive -->
 </div> 
           

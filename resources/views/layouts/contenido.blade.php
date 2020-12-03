@@ -1,7 +1,4 @@
-<div class="br-mainpanel">
-      <div class="pd-30">
-        <h2 class="tx-gray-900 mg-b-5"><img src="{{asset('img/logo-dental.png')}}" alt="" class="img-fluid" width="60">BIENVENIDO</h2>
-      </div> 
+<div class="br-mainpanel"> 
 
       <div class="br-pagebody mg-t-5 pd-x-30">
         <!-- <div class="row row-sm">

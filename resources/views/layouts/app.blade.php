@@ -14,7 +14,10 @@
   <link href="{{asset('lib/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
   <link href="{{asset('lib/jquery-switchbutton/jquery.switchButton.css')}}" rel="stylesheet">
   <link href="{{asset('lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">
-  <link href="{{asset('lib/chartist/chartist.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/chartist/chartist.css')}}" rel="stylesheet"> 
+ <link href="{{asset('lib/highlightjs/github.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/morris.js/morris.css')}}" rel="stylesheet">
+
 
   <!-- Bracket CSS -->
   <link rel="stylesheet" href="{{asset('css/bracket.css')}}">
@@ -94,7 +97,11 @@
           @yield('content') 
       </main>
       
-    </div>
+    </div>    
+    <script src="{{asset('lib/highlightjs/highlight.pack.js')}}"></script>
+    <script src="{{asset('lib/raphael/raphael.min.js')}}"></script>
+    <script src="{{asset('lib/morris.js/morris.js')}}"></script> 
+
 
     <script src="{{asset('lib/jquery/jquery.js')}}"></script>
     <script src="{{asset('lib/popper.js/popper.js')}}"></script>

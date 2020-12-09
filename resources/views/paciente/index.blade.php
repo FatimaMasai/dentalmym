@@ -35,12 +35,12 @@
           <td>{{$pacient->alergia}} </td>
           <td>{{$pacient->recomendado}} </td> 
           <td>{{$pacient->antecedentes}}   </td> 
-          <td> 
+          <td>  
             <a href="{{route('paciente.edit', $pacient->id)}}" class="btn btn-success" >Editar</a>
             <a href="{{route('paciente.show', $pacient->id)}}" class="btn btn-primary" >Ver</a>
-                                           
+                                             
           </td>
-        </tr> 
+        </tr>  
         @endforeach
       </tbody>
     </table>

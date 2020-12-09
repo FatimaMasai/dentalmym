@@ -8,7 +8,7 @@
           <div>
             <h2 class="tx-24 tx-uppercase tx-inverse tx-semibold tx-spacing-1">LISTADO TIPO SERVICIO</h2> 
             <a href="{{route('tiposervicio.create')}}">
-            <button class="btn btn-info"> <i class="menu-item-icon icon ion-android-add"></i> Agregar TipoServicio</button></a>
+            <button class="btn btn-info"> <i class="menu-item-icon icon ion-android-add"></i> Agregar Tipo Servicio</button></a>
               
           </div> 
         </div> 

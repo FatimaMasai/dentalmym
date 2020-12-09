@@ -53,10 +53,8 @@
             </div> 
             <div class="form-layout-footer">
                 <input type="submit" class="btn btn-primary" value="Guardar">
-                <button class="btn btn-[teal]" >
-                <a href="javascript:history.back()">Cancelar</a>
-                </button>  
-            </div> 
+             
+            </div>
         </form>
     </div> 
 </div>            

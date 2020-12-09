@@ -7,7 +7,9 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\TipoServicioController;
 use App\Http\Controllers\TipoProductoController;
-use App\Http\Controllers\PanelController;
+use App\Http\Controllers\PanelController; 
+use App\Http\Controllers\ServicioController; 
+use App\Http\Controllers\VentaController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,3 +38,5 @@ Route::resource('/proveedor', ProveedorController::class);
 Route::resource('/tiposervicio', TipoServicioController::class);
 Route::resource('/tipoproducto', TipoProductoController::class);
 Route::resource('/panel', PanelController::class);
+Route::resource('/servicio', ServicioController::class);
+Route::resource('/servicio', VentaController::class);

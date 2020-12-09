@@ -7,6 +7,13 @@
               <span class="menu-item-label">INICIO</span>
             </div><!-- menu-item -->
           </a><!-- br-menu-link -->
+          <a href="{{route('persona.index')}}" class="br-menu-link">
+            <div class="br-menu-item">
+              <i class="menu-item-icon icon ion-android-people tx-24"></i>
+              <span class="menu-item-label">Persona</span>
+            </div>
+            <!-- menu-item -->
+          </a>
           <a href="{{route('paciente.index')}}" class="br-menu-link">
             <div class="br-menu-item">
               <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
@@ -22,14 +29,8 @@
             <!-- menu-item -->
               
           </a>
-          <a href="{{route('persona.index')}}" class="br-menu-link">
-            <div class="br-menu-item">
-              <i class="menu-item-icon icon ion-android-people tx-24"></i>
-              <span class="menu-item-label">Persona</span>
-            </div>
-            <!-- menu-item -->
-          </a>
-          <a href="" class="br-menu-link">
+          
+          <a href="{{route('proveedor.index')}}" class="br-menu-link">
             <div class="br-menu-item">
               <i class="menu-item-icon icon ion-briefcase tx-24"></i>
               <span class="menu-item-label">Proveedor</span>
@@ -43,7 +44,7 @@
             </div>
             <!-- menu-item -->
           </a>
-          <a href="#" class="br-menu-link">
+          <a href="{{route('servicio.index')}}" class="br-menu-link">
             <div class="br-menu-item">
               <i class="menu-item-icon icon ion-ios-browsers-outline tx-24"></i>
               <span class="menu-item-label">Servicio</span>

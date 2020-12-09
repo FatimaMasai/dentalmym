@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label class="form-control-label">sexo: <span class="tx-danger">*</span></label>
+                            <label class="form-control-label">Sexo: <span class="tx-danger">*</span></label>
                             <input class="form-control" name="sexo" required type="text"  >
                         </div>
                     </div>

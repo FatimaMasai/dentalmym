@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Paciente;
-use App\Models\Persona;
+use App\Models\Servicio;
+use App\Models\TipoServicio;
 
-class PacienteController extends Controller
+class ServicioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $paciente= Paciente::where('estado',1)->orderBy('id', 'Desc')->paginate(10);
-        return view('paciente.index')->with('paciente', $paciente);
+        $servicio= Servicio::where('estado',1)->orderBy('id', 'Desc')->paginate(10);
+        return view('servicio.index')->with('servicio', $servicio);
     }
 
     /**
@@ -26,8 +26,8 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        $persona = Persona::where('estado',1)->orderBy('id','Desc')->get();
-        return view('paciente.create')->with('persona', $persona);
+        $tiposervicio = TipoServicio::where('estado',1)->orderBy('id','Desc')->get();
+        return view('servicio.create')->with('tiposervicio', $tiposervicio);
     }
 
     /**
@@ -38,9 +38,9 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        $paciente = new Paciente($request->all());
-        $paciente->save();
-        return redirect()->route('paciente.index');
+        $servicio = new Servicio($request->all());
+        $servicio->save();
+        return redirect()->route('servicio.index');
     }
 
     /**
@@ -51,8 +51,8 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        $paciente = Paciente::find($id);
-        return view('paciente.show')->with('paciente', $paciente); 
+        $servicio = Servicio::find($id);
+        return view('servicio.show')->with('servicio', $servicio); 
     }
 
     /**
@@ -63,9 +63,9 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
-        $paciente = Paciente::find($id);
-        $persona = Persona::where('estado',1)->orderby('id', 'Desc')->get();
-        return view('paciente.edit')->with('paciente', $paciente)->with('persona', $persona);
+        $servicio = Servicio::find($id);
+        $tiposervicio = TipoServicio::where('estado',1)->orderby('id', 'Desc')->get();
+        return view('servicio.edit')->with('servicio', $servicio)->with('tiposervicio', $tiposervicio);
     }
 
     /**
@@ -77,11 +77,10 @@ class PacienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $paciente = Paciente::find($id);
-        $paciente=$paciente->fill($request->all());
-        $paciente->save();
-        return redirect()->route('paciente.index');
+        $servicio = Servicio::find($id);
+        $servicio=$servicio->fill($request->all());
+        $servicio->save();
+        return redirect()->route('servicio.index');
     }
 
     /**
@@ -92,8 +91,8 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-        $paciente = Paciente::find($id);
-        $paciente->update(['estado'=>0]);
-        return redirect()->route('paciente.index');
+        $servicio = Servicio::find($id);
+        $servicio->update(['estado'=>0]);
+        return redirect()->route('servicio.index');
     }
 }

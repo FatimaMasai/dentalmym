@@ -52,10 +52,9 @@
                 </div> 
             </div> 
             <div class="form-layout-footer">
-                <button class="btn btn-info tx-center"> <i class="menu-item-icon icon ion-android-send  tx-14"> </i>Guardar</button> 
-                <button class="btn btn-secondary">Cancel</button>
-                <a href="javascript:history.back()">Ir al listado</a>
-            </div> 
+                <input type="submit" class="btn btn-primary" value="Guardar">
+              
+            </div>
         </form>
     </div> 
 </div>            

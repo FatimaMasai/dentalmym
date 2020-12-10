@@ -12,9 +12,10 @@ class Paciente extends Model
     protected $fillable = ['id','id_persona','alergia','observacion','responsable','antecedentes',
      'recomendado','estado', 'created_at', 'updated_at'];
 
-     public function persona()
+     public function Persona()
     {
         return $this->belongsTo('App\Models\Persona', 'id_persona', 'id');
     }
+   
 
 } 

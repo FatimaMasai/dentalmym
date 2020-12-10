@@ -9,7 +9,9 @@ use App\Http\Controllers\TipoServicioController;
 use App\Http\Controllers\TipoProductoController;
 use App\Http\Controllers\PanelController; 
 use App\Http\Controllers\ServicioController; 
-use App\Http\Controllers\VentaController; 
+use App\Http\Controllers\VentaController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +31,8 @@ Route::get('/', function () {
 // });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
+Route::get('/servicio/exportar', [ServicioController::class, 'exportar'])->name('servicio.exportar'); 
 
 Route::resource('/persona', PersonaController::class); 
 Route::resource('/paciente', PacienteController::class);
@@ -39,4 +42,4 @@ Route::resource('/tiposervicio', TipoServicioController::class);
 Route::resource('/tipoproducto', TipoProductoController::class);
 Route::resource('/panel', PanelController::class);
 Route::resource('/servicio', ServicioController::class);
-Route::resource('/servicio', VentaController::class);
+Route::resource('/venta', VentaController::class);

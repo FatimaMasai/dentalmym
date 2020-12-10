@@ -5,17 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Servicio;
 use App\Models\TipoServicio;
+use PDF;
+use Carbon\Carbon;
 
 class ServicioController extends Controller
 {
+
+    public function exportar()
+    {
+        $servicio = Servicio::all();
+        $fecha_actual = Carbon::now();
+        view()->share('servicio', $servicio);
+        view()->share('fecha_actual', $fecha_actual);
+        $pdf = PDF::loadView('servicio.exportar', [$servicio, $fecha_actual]);
+        return $pdf->download('lista_servicios.pdf');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+  
+
     public function index()
     {
-        $servicio= Servicio::where('estado',1)->orderBy('id', 'Desc')->paginate(10);
+        $servicio = Servicio::all();
+        // $servicio= Servicio::where('estado',1)->orderBy('id', 'Desc')->paginate(10);
         return view('servicio.index')->with('servicio', $servicio);
     }
 
@@ -95,4 +110,5 @@ class ServicioController extends Controller
         $servicio->update(['estado'=>0]);
         return redirect()->route('servicio.index');
     }
+ 
 }

@@ -13,7 +13,12 @@ class Venta extends Model
     'created_at', 'updated_at'];
 
     public function Paciente()
-{
-    return $this->belongsTo('App\Models\Paciente', 'id_paciente', 'id');
-}
+    {
+        return $this->belongsTo('App\Models\Paciente', 'id_paciente', 'id');
+    }
+ 
+    public function Servicio()
+    {
+        return $this->belongsTo('App\Models\Servicio', 'id_servicio', 'id');
+    }
 }

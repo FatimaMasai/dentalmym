@@ -9,7 +9,7 @@
             <h2 class="tx-24 tx-uppercase tx-inverse tx-semibold tx-spacing-1">LISTADO SERVICIO</h2> 
             <a href="{{route('servicio.create')}}">
             <button class="btn btn-info"> <i class="menu-item-icon icon ion-android-add"></i> Agregar Servicio </button></a>
-              
+              <a href="{{route('servicio.exportar')}}" class="btn btn-danger">PDF</a>
           </div> 
         </div> 
 
@@ -28,12 +28,13 @@
       @foreach($servicio as $serv)
         <tr>
           <th scope="row">{{$serv ->id}}</th>
-          <td>{{$serv->tiposervicio->nombre}}  </td>
           <td>{{$serv->nombre}} </td>
           <td>{{$serv->precio}} BS </td> 
+          <td>{{$serv->tiposervicio->nombre}}  </td>
+
           <td>  
             <a href="{{route('servicio.edit', $serv->id)}}" class="btn btn-success" >Editar</a>
-            <a href="{{route('servicio.show', $serv->id)}}" class="btn btn-primary" >Ver</a>
+            <a href="{{route('servicio.show', $serv->id)}}" class="btn btn-primary" >Ver</a> 
                                              
           </td>
         </tr>  

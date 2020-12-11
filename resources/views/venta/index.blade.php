@@ -27,8 +27,9 @@
       <tbody>
       @foreach($venta as $vent)
         <tr>
-          <th scope="row">{{$vent ->id}}</th> 
-          <td>{{$vent->servicio->nombre}}  </td>
+          <th scope="row">{{$vent ->id}}</th>  
+          <td>{{$vent->paciente->persona->nombre}}</td>
+          <td>{{$vent->servicio->nombre}}</td>
           <td>{{$vent->glosario}} </td> 
           <td>  
             <a href="{{route('venta.edit', $vent->id)}}" class="btn btn-success" >Editar</a>

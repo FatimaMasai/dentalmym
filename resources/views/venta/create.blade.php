@@ -13,9 +13,9 @@
                         <div class="form-group">
                             <label for="x_card_code" class="control-label mb-1"> PACIENTE<span class="tx-danger">*</span></label>
                                 <select name="id_paciente" id="id_paciente" class="form-control">
-                                    <option value=" "> SELECCIONAR </option> 
+                                    <option> SELECCIONAR </option> 
                                     @foreach($paciente as $pacient)
-                                    <option value="{{$pacient->persona->id}}">{{$pacient->persona->nombre}} </option>
+                                    <option value="{{$pacient->id}}">{{$pacient->persona->nombre}} </option>
                                     @endforeach 
                                 </select>
                         </div> 

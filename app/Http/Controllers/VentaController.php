@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Venta;
-
 use App\Models\Paciente;
-use App\Models\Servicio;
+use App\Models\Servicio; 
+
 class VentaController extends Controller
 {
     /**
@@ -16,10 +16,8 @@ class VentaController extends Controller
      */
     public function index()
     { 
-        // $venta = Venta::all();
         $venta= venta::where('estado',1)->orderBy('id', 'Desc')->paginate(10);
-        return view('venta.index')->with('venta', $venta);
-   
+         return view('venta.index')->with('venta', $venta);
     }
 
     /**
@@ -29,8 +27,7 @@ class VentaController extends Controller
      */
     public function create()
     {
-        
-        $paciente = Paciente::where('estado',1)->orderBy('id','Desc')->get();
+        $paciente = Paciente::where('estado',1)->orderBy('id','Desc')->get(); 
         $servicio = Servicio::where('estado',1)->orderBy('id','Desc')->get();
         return view('venta.create')->with('paciente', $paciente)->with('servicio', $servicio);
     }

@@ -16,6 +16,7 @@ class Paciente extends Model
     {
         return $this->belongsTo('App\Models\Persona', 'id_persona', 'id');
     }
+  
    
 
 } 

@@ -14,7 +14,7 @@ class Venta extends Model
 
     public function Paciente()
     {
-        return $this->belongsTo('App\Models\Paciente', 'id_paciente', 'id');
+        return $this->belongsTo('App\Models\Paciente', 'id_paciente', 'id'); 
     }
  
     public function Servicio()

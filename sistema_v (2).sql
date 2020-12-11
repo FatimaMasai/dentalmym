@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-12-2020 a las 23:25:53
+-- Tiempo de generación: 11-12-2020 a las 22:02:36
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -73,6 +73,30 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_detalle`
+--
+
+CREATE TABLE `tbl_detalle` (
+  `id` int(11) NOT NULL,
+  `id_venta` int(11) NOT NULL,
+  `id_servicio` int(11) NOT NULL,
+  `precio_unitario` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `estado` tinyint(4) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_detalle`
+--
+
+INSERT INTO `tbl_detalle` (`id`, `id_venta`, `id_servicio`, `precio_unitario`, `cantidad`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 2, 2, 300, 2, 1, '2020-12-11 14:59:25', '2020-12-11 14:59:25');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_doctor`
 --
 
@@ -119,7 +143,8 @@ CREATE TABLE `tbl_paciente` (
 
 INSERT INTO `tbl_paciente` (`id`, `id_persona`, `alergia`, `observacion`, `responsable`, `antecedentes`, `recomendado`, `estado`, `created_at`, `updated_at`) VALUES
 (1, 11, 'NINGUNA', 'DOLOR DE MUELA', 'JOSE MELGAR', 'NINGUNA', 'PUBLICIDAD DE FB', 1, '2020-12-03 01:22:08', '2020-12-03 20:35:29'),
-(2, 10, 'NINGUNA', 'DOLOR DE ENCIAS', 'JOSE', 'NINGUNA', 'MARIA', 1, '2020-12-10 20:16:17', '2020-12-10 20:16:17');
+(2, 10, 'NINGUNA', 'DOLOR DE ENCIAS', 'JOSE', 'NINGUNA', 'MARIA', 1, '2020-12-10 20:16:17', '2020-12-10 20:16:17'),
+(3, 2, 'NINGUNA', 'DOLOR DE MUELA', 'FÁTIMA', 'NINGUNA', 'JOSÉ', 1, '2020-12-11 03:37:48', '2020-12-11 03:37:48');
 
 -- --------------------------------------------------------
 
@@ -267,8 +292,6 @@ INSERT INTO `tbl_tipo_servicio` (`id`, `nombre`, `estado`, `created_at`, `update
 CREATE TABLE `tbl_venta` (
   `id` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL,
-  `id_servicio` int(11) NOT NULL,
-  `glosario` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -278,9 +301,10 @@ CREATE TABLE `tbl_venta` (
 -- Volcado de datos para la tabla `tbl_venta`
 --
 
-INSERT INTO `tbl_venta` (`id`, `id_paciente`, `id_servicio`, `glosario`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 'Venta de servicio', 1, '2020-12-10 20:04:04', '2020-12-10 20:04:04'),
-(2, 10, 1, 'VENTA DE SERVICIO', 1, '2020-12-10 20:16:48', '2020-12-10 20:16:48');
+INSERT INTO `tbl_venta` (`id`, `id_paciente`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2020-12-11 14:56:24', '2020-12-11 14:56:24'),
+(2, 2, 1, '2020-12-11 14:58:15', '2020-12-11 14:58:15'),
+(3, 3, 1, '2020-12-11 20:20:24', '2020-12-11 20:20:24');
 
 -- --------------------------------------------------------
 
@@ -329,6 +353,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indices de la tabla `tbl_detalle`
+--
+ALTER TABLE `tbl_detalle`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tbl_doctor`
@@ -402,6 +432,12 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `tbl_detalle`
+--
+ALTER TABLE `tbl_detalle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `tbl_doctor`
 --
 ALTER TABLE `tbl_doctor`
@@ -411,7 +447,7 @@ ALTER TABLE `tbl_doctor`
 -- AUTO_INCREMENT de la tabla `tbl_paciente`
 --
 ALTER TABLE `tbl_paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_persona`
@@ -447,7 +483,7 @@ ALTER TABLE `tbl_tipo_servicio`
 -- AUTO_INCREMENT de la tabla `tbl_venta`
 --
 ALTER TABLE `tbl_venta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

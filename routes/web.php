@@ -33,6 +33,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
 Route::get('/servicio/exportar', [ServicioController::class, 'exportar'])->name('servicio.exportar'); 
+Route::get('/venta/exportar', [VentaController::class, 'exportar'])->name('venta.exportar'); 
 
 Route::resource('/persona', PersonaController::class); 
 Route::resource('/paciente', PacienteController::class);

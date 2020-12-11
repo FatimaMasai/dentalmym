@@ -19,23 +19,6 @@
                                     @endforeach 
                                 </select>
                         </div> 
-                    </div>
-                    <div class="col-lg-4"> 
-                        <div class="form-group">
-                            <label for="x_card_code" class="control-label mb-1">   SERVICIO<span class="tx-danger">*</span></label>
-                                <select name="id_servicio" id="id_servicio" class="form-control">
-                                    <option value=" "> SELECCIONAR </option> 
-                                    @foreach($servicio as $servici)
-                                    <option value="{{$servici->id}}">{{$servici->nombre}} </option>
-                                    @endforeach 
-                                </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <label class="form-control-label">GLOSARIO: <span class="tx-danger">*</span></label>
-                            <input class="form-control" name="glosario" type="text"  >
-                        </div>
                     </div> 
                 </div> 
             </div> 

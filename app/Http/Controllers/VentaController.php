@@ -4,11 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Venta;
-use App\Models\Paciente;
-use App\Models\Servicio; 
+use App\Models\Paciente; 
+use PDF;
+use Carbon\Carbon;
 
 class VentaController extends Controller
 {
+    public function exportar()
+    {
+        $venta = venta::all();
+        $fecha_actual = Carbon::now();
+        view()->share('venta', $venta);
+        view()->share('fecha_actual', $fecha_actual);
+        $pdf = PDF::loadView('venta.exportar', [$venta, $fecha_actual]);
+        return $pdf->download('lista_ventas.pdf');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,9 +37,8 @@ class VentaController extends Controller
      */
     public function create()
     {
-        $paciente = Paciente::where('estado',1)->orderBy('id','Desc')->get(); 
-        $servicio = Servicio::where('estado',1)->orderBy('id','Desc')->get();
-        return view('venta.create')->with('paciente', $paciente)->with('servicio', $servicio);
+        $paciente = Paciente::where('estado',1)->orderBy('id','Desc')->get();  
+        return view('venta.create')->with('paciente', $paciente);
     }
 
     /**
@@ -67,9 +76,8 @@ class VentaController extends Controller
     {
         $venta = venta::find($id);
         
-        $paciente = Paciente::where('estado',1)->orderby('id', 'Desc')->get();
-        $servicio = Servicio::where('estado',1)->orderby('id', 'Desc')->get();
-        return view('venta.edit')->with('venta', $venta)->with('paciente', $paciente)->with('servicio', $servicio);
+        $paciente = Paciente::where('estado',1)->orderby('id', 'Desc')->get(); 
+        return view('venta.edit')->with('venta', $venta)->with('paciente', $paciente);
     }
 
     /**

@@ -10,6 +10,7 @@ use App\Http\Controllers\TipoProductoController;
 use App\Http\Controllers\PanelController; 
 use App\Http\Controllers\ServicioController; 
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\ProductoController;
 
 
 /*
@@ -44,3 +45,4 @@ Route::resource('/tipoproducto', TipoProductoController::class);
 Route::resource('/panel', PanelController::class);
 Route::resource('/servicio', ServicioController::class);
 Route::resource('/venta', VentaController::class);
+Route::resource('/producto', ProductoController::class);

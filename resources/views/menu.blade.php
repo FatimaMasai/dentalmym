@@ -97,7 +97,7 @@
           
           <!-- br-menu-link -->
           <ul class="br-menu-sub nav flex-column">
-            <li class="nav-item"><a href="accordion.html" class="nav-link">Producto</a></li>
+            <li class="nav-item"><a href="{{route('producto.index')}}" class="nav-link">Producto</a></li>
             <li class="nav-item"><a href="{{route('tipoproducto.index')}}" class="nav-link">Tipo Producto</a></li>
             <li class="nav-item"><a href="buttons.html" class="nav-link">Detalle Compra</a></li>
             <li class="nav-item"><a href="cards.html" class="nav-link">Compra</a></li>

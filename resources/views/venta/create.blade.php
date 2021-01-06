@@ -23,7 +23,7 @@
                 </div> 
             </div> 
             <div class="form-layout-footer">
-                <input type="submit" class="btn btn-primary" value="Guardar">
+                <input type="submit" class="btn btn-primary" value="INICIAR VENTA">
               
             </div>
         </form>

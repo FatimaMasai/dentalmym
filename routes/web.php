@@ -11,6 +11,9 @@ use App\Http\Controllers\PanelController;
 use App\Http\Controllers\ServicioController; 
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\DetalleController;
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\RoleController;
 
 
 /*
@@ -23,6 +26,7 @@ use App\Http\Controllers\ProductoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
     return view('auth.login');
@@ -30,12 +34,17 @@ Route::get('/', function () {
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Auth::routes();
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
 Route::get('/servicio/exportar', [ServicioController::class, 'exportar'])->name('servicio.exportar'); 
 Route::get('/venta/exportar', [VentaController::class, 'exportar'])->name('venta.exportar'); 
 
+Route::get('/venta/finalizar_venta', [VentaController::class, 'finalizar_venta'])->name('venta.finalizar_venta'); 
+Route::get('/venta/reporte_venta', [VentaController::class, 'reporte_venta'])->name('venta.reporte_venta');  
+   
+ 
 Route::resource('/persona', PersonaController::class); 
 Route::resource('/paciente', PacienteController::class);
 Route::resource('/doctor', DoctorController::class); 
@@ -46,3 +55,13 @@ Route::resource('/panel', PanelController::class);
 Route::resource('/servicio', ServicioController::class);
 Route::resource('/venta', VentaController::class);
 Route::resource('/producto', ProductoController::class);
+Route::resource('/detalle', DetalleController::class);
+Route::resource('/pago', PagoController::class); 
+// Route::resource('/role', RoleController::class); 
+
+// Route::group(['middleware' => ['auth'], 'as' => 'role.'], function(){
+//     Route::resource('/role', RoleController::class); 
+//     });
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('/role', RoleController::class); 
+    });

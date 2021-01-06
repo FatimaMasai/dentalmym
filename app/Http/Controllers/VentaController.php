@@ -5,16 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Venta;
 use App\Models\Paciente; 
+use App\Models\Servicio; 
+use App\Models\Detalle; 
 use PDF;
 use Carbon\Carbon;
 
 class VentaController extends Controller
 {
+    public function delete($id,$venta_id)
+    {
+        $detalle=Detalle::findOrFail($id);
+        $detalle->delete(); 
+        return redirect()->route('venta.edit');
+    }
+    
+     
+    
+
     public function exportar()
     {
         $venta = venta::all();
+        $detalle = Detalle::all();
         $fecha_actual = Carbon::now();
-        view()->share('venta', $venta);
+        view()->share('venta', $venta); 
+        view()->share('detalle', $detalle);
         view()->share('fecha_actual', $fecha_actual);
         $pdf = PDF::loadView('venta.exportar', [$venta, $fecha_actual]);
         return $pdf->download('lista_ventas.pdf');
@@ -51,7 +65,7 @@ class VentaController extends Controller
     {
         $venta = new venta($request->all());
         $venta->save();
-        return redirect()->route('venta.index');
+        return redirect()->route('venta.edit', $venta->id);
     }
 
     /**
@@ -61,9 +75,19 @@ class VentaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $venta = venta::find($id);
-        return view('venta.show')->with('venta', $venta); 
+    {        
+        $venta = Venta::find($id);
+        $detalle = Detalle::where('id_venta', $id)->get();
+        $total_pagar = 0;
+        foreach($detalle as $detall)
+        {
+            $total_pagar += $detall->cantidad * $detall->servicio->precio;
+        }
+        return view('venta.show')
+        ->with('venta', $venta)
+        ->with('detalle', $detalle)
+        ->with('total_pagar', $total_pagar);
+     
     }
 
     /**
@@ -76,8 +100,19 @@ class VentaController extends Controller
     {
         $venta = venta::find($id);
         
-        $paciente = Paciente::where('estado',1)->orderby('id', 'Desc')->get(); 
-        return view('venta.edit')->with('venta', $venta)->with('paciente', $paciente);
+        $servicio = Servicio::where('estado',1)->orderby('id', 'Desc')->get(); 
+        $nombre_paciente = $venta->paciente->persona->nombre.' '.$venta->paciente->persona->apellido_pat;        
+        $detalle = Detalle::where('id_venta', $id)->get();
+        $total_pagar = 0;
+        foreach($detalle as $detall)
+        {
+            $total_pagar += $detall->cantidad * $detall->servicio->precio;
+        }
+        return view('venta.edit')->with('venta', $venta)
+        ->with('servicio', $servicio)
+        ->with('nombre_paciente', $nombre_paciente)
+        ->with('detalle', $detalle)
+        ->with('total_pagar', $total_pagar);
     }
 
     /**
@@ -107,4 +142,5 @@ class VentaController extends Controller
         $venta->update(['estado'=>0]);
         return redirect()->route('venta.index');
     }
+    
 }

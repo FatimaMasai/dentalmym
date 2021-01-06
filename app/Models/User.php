@@ -16,13 +16,25 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'id_persona',
-        'id_tipousuario',
+    protected $fillable = [ 
         'name',
         'email',
         'password',
     ];
+
+
+    //relacion un usuarios puede tener muchos permisos
+    public function Permission()
+    {
+        return $this->belongsToMany('App\Models\Permission'); 
+    }
+    //un usuario puede tener muchos roles
+    public function Role()
+    {
+        return $this->belongsToMany('App\Models\Role');
+    }
+
+    
 
     /**
      * The attributes that should be hidden for arrays.

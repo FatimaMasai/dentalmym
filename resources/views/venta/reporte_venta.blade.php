@@ -1,8 +1,31 @@
-@extends('layouts.app')
-@section('slider')     
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <div class="br-pagebody">
-        <div class="br-section-wrapper">
+    <style>
+        h1{
+            text-align: center;
+        }
+        span{
+            text-align: right;
+        }
+        table{
+            width: 100%;
+            border: 2px solid black;
+            border-collapse: collapse;
+        } 
+        table, th, td {
+            border: 1px solid black;
+            text-align: left;
+            }
+        
+    </style>  
+    <title>Hello, world!</title>
+  </head>
+  <body>
           <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">PACIENTE: </h6> 
 
           <input type="text" name="id_paciente"  id="id_paciente" value="{{$venta->paciente->persona->nombre}} {{$venta->paciente->persona->apellido_pat}}" class="form-control" readonly >
@@ -52,9 +75,13 @@
                 <div class="col-md-1">
                     <a href="{{route('venta.edit',$venta->id)}}"><button class="btn btn-primary">Editar</button></a>
                 </div> 
-               
+                <div class="col-md-1">
+                    <a href="{{route('venta.reporte_venta',$venta->id)}}"><button class="btn btn-primary">Reporte</button></a>
+                </div>
             </div> 
      
         </div><!-- br-section-wrapper -->
-      </div> 
-@endsection
+      </div>  
+        
+  </body>
+</html>

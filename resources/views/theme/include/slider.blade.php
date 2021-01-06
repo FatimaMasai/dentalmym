@@ -13,7 +13,14 @@
               <span class="menu-item-label">Persona</span>
             </div>
             <!-- menu-item -->
-          </a> 
+          </a>
+          <a href="{{route('role.index')}}" class="br-menu-link">
+            <div class="br-menu-item">
+              <i class="menu-item-icon icon ion-android-people tx-24"></i>
+              <span class="menu-item-label">Rol</span>
+            </div>
+            <!-- menu-item -->
+          </a>
           <a href="{{route('paciente.index')}}" class="br-menu-link">
             <div class="br-menu-item">
               <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
@@ -98,7 +105,8 @@
           <!-- br-menu-link -->
           <ul class="br-menu-sub nav flex-column">
             <li class="nav-item"><a href="{{route('producto.index')}}" class="nav-link">Producto</a></li>
-            <li class="nav-item"><a href="{{route('tipoproducto.index')}}" class="nav-link">Tipo Producto</a></li> 
+            <li class="nav-item"><a href="{{route('tipoproducto.index')}}" class="nav-link">Tipo Producto</a></li>
+            <li class="nav-item"><a href="buttons.html" class="nav-link">Detalle Compra</a></li>
             <li class="nav-item"><a href="cards.html" class="nav-link">Compra</a></li>
             <li class="nav-item"><a href="icons.html" class="nav-link">Inventario </a></li>
           </ul>

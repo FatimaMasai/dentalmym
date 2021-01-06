@@ -6,9 +6,9 @@
       <div class="pd-x-30 pd-t-30 pd-b-15">
         <div class="d-flex align-items-center justify-content-between">
           <div>
-            <h2 class="tx-24 tx-uppercase tx-inverse tx-semibold tx-spacing-1">VENTA</h2> 
+            <h2 class="tx-24 tx-uppercase tx-inverse tx-semibold tx-spacing-1">PAGOS</h2> 
             <a href="{{route('venta.create')}}">
-            <button class="btn btn-info"> <i class="menu-item-icon icon ion-android-add"></i> Agregar Venta </button></a>
+            <button class="btn btn-info"> <i class="menu-item-icon icon ion-android-add"></i> COBRAR </button></a>
               <a href="{{route('venta.exportar')}}" class="btn btn-danger">PDF</a>
           </div> 
         </div> 
@@ -18,18 +18,24 @@
       <thead class="thead-colored thead-primary">
         <tr>
           <th class="wd-5p">ID</th>  
-          <th class="wd-7p">PACIENTE</th>  
+          <th class="wd-7p">Venta</th> 
+          <th class="wd-7p">PACIENTE</th> 
+          <th class="wd-7p">DEUDA</th> 
+          <th class="wd-7p">A CUENTA</th> 
           <th class="wd-7p">ACCION</th> 
         </tr>
       </thead>
       <tbody>
-      @foreach($venta as $vent)
+      @foreach($pago as $pag)
         <tr>
-          <th scope="row">{{$vent ->id}}</th>   
-          <td>{{$vent->paciente->persona->nombre}}</td>  
+          <th scope="row">{{$pag ->id}}</th>   
+          <td>{{$pag->venta->id}}</td> 
+          <td>{{$pag->venta->paciente->persona->nombre}}</td> 
+          <td> </td> 
+          <td>{{$pag->monto_pagar}}</td> 
           <td>  
-            <a href="{{route('venta.edit', $vent->id)}}" class="btn btn-success" >Editar</a>
-            <a href="{{route('venta.show', $vent->id)}}" class="btn btn-primary" >Ver</a> 
+            <a href="{{route('pago.edit', $pag->id)}}" class="btn btn-success" >Editar</a>
+            <a href="{{route('pago.show', $pag->id)}}" class="btn btn-primary" >Ver</a> 
                                              
           </td>
         </tr>  

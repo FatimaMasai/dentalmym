@@ -39,6 +39,7 @@ class PersonaController extends Controller
     {
         $persona= new persona($request->all());
         $persona->save();
+        Alert('Éxito', 'La Persona se ha guardado', 'success')->showConfirmButton();
         return redirect()->route('persona.index');
 
     }
@@ -94,6 +95,7 @@ class PersonaController extends Controller
     {
         $persona = persona::find($id);
         $persona->update(['estado'=>0]);
+        Alert('Éxito', 'El rol eliminado', 'success')->showConfirmButton();
         return redirect()->route('persona.index');
     }
 }

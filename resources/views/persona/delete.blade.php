@@ -18,6 +18,7 @@
                         <div class="mg-t-20 mg-sm-t-0">
                             <h5 class="mg-b-2 tx-warning">Alerta!  </h5>
                             <p class="mg-b-0 tx-gray">¿Deseas eliminar a <b>{{$person->nombre.' '.$person->apellido_pat}} ? </b></p>
+                            
                         </div>
                     </div> 
                 </div> 
@@ -30,4 +31,25 @@
         </div>
     </form>
   </div>
-</div> 
+</div>  
+
+<script>
+
+Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  }
+})
+</script>

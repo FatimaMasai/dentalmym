@@ -44,19 +44,22 @@ Route::get('/venta/exportar', [VentaController::class, 'exportar'])->name('venta
 Route::get('/venta/finalizar_venta', [VentaController::class, 'finalizar_venta'])->name('venta.finalizar_venta'); 
 Route::get('/venta/reporte_venta', [VentaController::class, 'reporte_venta'])->name('venta.reporte_venta');  
    
- 
-Route::resource('/persona', PersonaController::class); 
-Route::resource('/paciente', PacienteController::class);
-Route::resource('/doctor', DoctorController::class); 
-Route::resource('/proveedor', ProveedorController::class);
-Route::resource('/tiposervicio', TipoServicioController::class);
-Route::resource('/tipoproducto', TipoProductoController::class);
-Route::resource('/panel', PanelController::class);
-Route::resource('/servicio', ServicioController::class);
-Route::resource('/venta', VentaController::class);
-Route::resource('/producto', ProductoController::class);
-Route::resource('/detalle', DetalleController::class);
-Route::resource('/pago', PagoController::class); 
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('/persona', PersonaController::class); 
+    Route::resource('/paciente', PacienteController::class);
+    Route::resource('/doctor', DoctorController::class); 
+    Route::resource('/proveedor', ProveedorController::class);
+    Route::resource('/tiposervicio', TipoServicioController::class);
+    Route::resource('/tipoproducto', TipoProductoController::class);
+    Route::resource('/panel', PanelController::class);
+    Route::resource('/servicio', ServicioController::class);
+    Route::resource('/venta', VentaController::class);
+    Route::resource('/producto', ProductoController::class);
+    Route::resource('/detalle', DetalleController::class);
+    Route::resource('/pago', PagoController::class); 
+    });
+
+
 // Route::resource('/role', RoleController::class); 
 
 // Route::group(['middleware' => ['auth'], 'as' => 'role.'], function(){

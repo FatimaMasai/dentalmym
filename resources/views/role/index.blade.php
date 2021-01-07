@@ -50,15 +50,12 @@
               <td>  
                 <a href="{{route('role.edit', $rol->id)}}" class="btn btn-success" >Editar</a>
                 <a href="{{route('role.show', $rol->id)}}" class="btn btn-primary" >Ver</a>
-                                                
-              </td>
+      
             @endforeach 
           </tbody>
         </table> 
       </div><!-- table-responsive -->
 </div> 
-
-          
  
          
 @endsection

@@ -7,6 +7,7 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests\Role\StoreRequest;
 use App\Http\Requests\Role\UpdateRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RoleController extends Controller
 {
@@ -92,6 +93,10 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-         //PENDIENTE AÑADIR AUTORIZACION CON LOS POLICES
+        //PENDIENTE AÑADIR AUTORIZACION CON LOS POLICES
+        $role->delete();
+        Alert('Éxito', 'El rol eliminado', 'success')->showConfirmButton();
+        dd($role);
+        return redirect()->route('role.index');
     }
 }

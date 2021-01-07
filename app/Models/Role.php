@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Role extends Model
 {
@@ -27,6 +28,8 @@ class Role extends Model
     public function store($request)
     {
         $slug = Str::slug($request->nombre, '-');
+        Alert('Éxito', 'El rol se ha guardado', 'success')->showConfirmButton();
+        // toast('Rol guardado', 'success', 'top-rigth');
         return self::create($request->all() + [
             'slug' => $slug,
         ]);

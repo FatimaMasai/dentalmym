@@ -22,23 +22,12 @@
                     </div> 
                 </div> 
             <div class="form-layout-footer"> 
-            <a href="#" class="btn btn-danger" id="{{ $role->id }}" data-method="DELETE"  onclick="enviar_formulario()">Eliminar</a> 
-
-
+      
 
             </div> 
         </form>
         
     </div> 
-    <form action="POST" action="{{route('role.destroy', $role->id)}}" name="delete_form">
-        @csrf  
-    </form>
-</div>    
-<script>
-    function enviar_formulario()
-    {
-        document.delete_form.submit();
-    }
-</script>        
+      
  
 @endsection

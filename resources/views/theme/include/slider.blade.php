@@ -14,6 +14,13 @@
             </div>
             <!-- menu-item -->
           </a>
+          <a href="{{route('grafico')}}" class="br-menu-link">
+            <div class="br-menu-item">
+              <i class="menu-item-icon icon ion-android-people tx-24"></i>
+              <span class="menu-item-label">GRAFICPS</span>
+            </div>
+            <!-- menu-item -->
+          </a>
           <a href="{{route('role.index')}}" class="br-menu-link">
             <div class="br-menu-item">
               <i class="menu-item-icon icon ion-android-people tx-24"></i>

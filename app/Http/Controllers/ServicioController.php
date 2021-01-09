@@ -10,6 +10,11 @@ use Carbon\Carbon;
 
 class ServicioController extends Controller
 {
+    public function grafico()
+    {
+        $servicio = Servicio::where('estado',1)->get();
+        return view('servicio/graficos')->with('servicio', $servicio);
+    } 
 
     public function exportar()
     {

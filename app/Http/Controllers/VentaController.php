@@ -19,7 +19,20 @@ class VentaController extends Controller
         return redirect()->route('venta.edit');
     }
     
-     
+    public function reporte_venta_id($id)
+    {
+
+        $venta = Venta::find($id);
+        $detalle = Detalle::where('id_venta',$id)->get();
+        $total_pagar=0;
+        foreach($detalle as $detall)
+        {
+            $total_pagar += $detall->cantidad * $detall->servicio->precio;
+        }
+        $PDF = PDF::loadView('venta/exportar_venta_id',compact('venta', 'detalle', 'total_pagar'));
+        return $PDF->stream('reporte.pdf');
+        
+    }  
     
 
     public function exportar()

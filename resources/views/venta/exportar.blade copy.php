@@ -26,7 +26,7 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1>Reporte Venta</h1>
+    <h1>NOTA DE VENTA</h1>
     <img src="{{'./img/logo-dental.png'}}" width="60" height="60" alt="">
     <span> {{$fecha_actual}} </span>
     <table>

@@ -42,7 +42,11 @@ Route::get('/servicio/exportar', [ServicioController::class, 'exportar'])->name(
 Route::get('/venta/exportar', [VentaController::class, 'exportar'])->name('venta.exportar'); 
 
 Route::get('/venta/finalizar_venta', [VentaController::class, 'finalizar_venta'])->name('venta.finalizar_venta'); 
-Route::get('/venta/reporte_venta', [VentaController::class, 'reporte_venta'])->name('venta.reporte_venta');  
+Route::get('/venta/reporte_venta', [VentaController::class, 'reporte_venta'])->name('venta.reporte_venta'); 
+Route::get('/servicio/grafico', [ServicioController::class, 'grafico'])->name('grafico'); 
+Route::get('grafico', [ServicioController::class, 'grafico'])->name('grafico');
+
+Route::get('/venta/{id}/reporte_venta_id', [VentaController::class, 'reporte_venta_id'])->name('venta.reporte_venta_id');  
    
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('/persona', PersonaController::class); 

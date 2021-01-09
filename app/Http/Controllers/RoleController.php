@@ -93,10 +93,6 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //PENDIENTE AÑADIR AUTORIZACION CON LOS POLICES
-        $role->delete();
-        Alert('Éxito', 'El rol eliminado', 'success')->showConfirmButton();
-        dd($role);
-        return redirect()->route('role.index');
+        //PENDIENTE AÑADIR AUTORIZACION CON LOS POLICES 
     }
 }

@@ -36,7 +36,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="x_card_code" class="control-label mb-1"> CANTIDAD<span class="tx-danger"></span></label>
-                                <input class="form-control" id="cantidad" name="cantidad" type="text" required  >
+                                <input class="form-control" id="cantidad" name="cantidad" type="text"   >
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -86,8 +86,12 @@
                     </div>
                      
                 </div>
+                
             </form> 
 
     </div> 
+    <div class="col-md-1">
+                    <a href="{{route('venta.reporte_venta_id', $venta->id)}}"><button class="btn btn-danger">FINALIZAR VENTA</button></a>
+                </div> 
 </div>            
 @endsection

@@ -6,10 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Servicio;
 use App\Models\TipoServicio;
 use PDF;
-use Carbon\Carbon;
-
+use Carbon\Carbon; 
+use App\Exports\ServicioExport; 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ServicioImport; 
+ 
 class ServicioController extends Controller
 {
+    public function import_excel(Request $request)
+    {
+        $file=$request->file('file');
+        Excel::import(new ServicioImport, $file);
+        return back()->with('message', 'Importacion de usuario completada');
+    }
+    public function exportar_excel()
+    {
+        return Excel::download(new ServicioExport, 'listado_servicio.xlsx');
+    }
     public function grafico()
     {
         $servicio = Servicio::where('estado',1)->get();

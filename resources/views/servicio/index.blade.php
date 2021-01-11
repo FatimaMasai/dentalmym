@@ -10,7 +10,16 @@
             <a href="{{route('servicio.create')}}">
             <button class="btn btn-info"> <i class="menu-item-icon icon ion-android-add"></i> Agregar Servicio </button></a>
               <a href="{{route('servicio.exportar')}}" class="btn btn-danger">PDF</a>
+              <a href="{{route('servicio.exportar_excel')}}" class="btn btn-info">EXCEL</a>
           </div> 
+          <form action="{{route('servicio.import_excel')}}" method="get" enctype="multipart/form-data">
+            @csrf 
+            @if(Session::has('message'))
+              <p>{{Session::get('message')}}</p>
+            @endif
+            <input type="file" name="file">
+            <button class="btn btn-success">Importar Servicios</button>
+          </form>
         </div> 
 
   <div class="table-responsive pt-4">

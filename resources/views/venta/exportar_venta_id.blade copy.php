@@ -21,42 +21,16 @@
             border: 1px solid black;
             text-align: left;
             }
+      
         
     </style>  
-    <title>REPORTE</title>
+    <title>Hello, world!</title>
   </head>
   <body>
-    <h1>NOTA  VENTA</h1> 
-      
-    <table id="tabla1">
-        <thead id="c1">
-          <tr>
-            <th><img src="{{'./img/logo-dental.png'}}" width="20%"  alt=""></th>
-            <th>VENTA DE SERVICIOS</th>
-            <th>NOTA DE VENTA:</th>V
-          </tr>
-        </thead id="c2">
-        <tbody>   
-          <tr>
-            <th ></th>   
-            <td>NIT: 12566767</td> 
-            <td>FECHA: 12/03/2021</td>   
-          </tr>    
-          <tr>
-            <th></th>   
-            <td>DIRECCIÓN: AV. 4TO ANILLO ENTRE AV. CUMAVI Y 3 PASOS AL FRENTE C/2 </td> 
-            <td>HORA: 12:10 PM</td>   
-          </tr>  
-          <tr>
-            <th></th>   
-            <td>TELEFONO: 75456766</td> 
-            <td>VENDEDOR: LILIANA ROJAS</td>   
-          </tr>    
-          
-        </tbody>
-        
-      </table>  
-   
+    <h1>NOTA  VENTA</h1>
+    
+    <img src="{{'./img/logo-dental.png'}}" width="60" height="60" alt="">
+            
     <div  >
         <div  >
           <h6>PACIENTE: </h6> 
@@ -65,8 +39,8 @@
           <p>Fecha Emsión: {{$venta->created_at}} </p>
 
           <div>
-            <table id="servicios">
-              <thead id="ser1">
+            <table >
+              <thead>
                 <tr>
                   <th>ITEM</th>
                   <th>SERVICIO</th>
@@ -75,7 +49,7 @@
                   <th>SUBTOTAL</th>
                 </tr>
               </thead>
-              <tbody id="ser"> 
+              <tbody> 
                 @php($item=1)
                 @foreach($detalle as $detall)  
                 <tr>
@@ -104,5 +78,10 @@
         </div> 
       </div> 
     
+  
+  
+  
+  
+  
   </body>
 </html>

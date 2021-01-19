@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\TipoProducto;
+use App\Http\Requests\Producto\StoreRequest;
+use App\Http\Requests\Producto\UpdateRequest;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class ProductoController extends Controller
 {
@@ -36,10 +40,11 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $producto = new Producto($request->all());
         $producto->save();
+        Alert('Éxito', 'El Nuevo Producto se ha guardado', 'success')->showConfirmButton();
         return redirect()->route('producto.index');
     }
 
@@ -75,11 +80,19 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    // {
+    //     $producto = Producto::find($id);
+    //     $producto=$producto->fill($request->all());
+    //     $producto->save();
+    //     return redirect()->route('producto.index');
+    // }
+
+    public function update(UpdateRequest $request, Producto $producto)
     {
-        $producto = Producto::find($id);
-        $producto=$producto->fill($request->all());
-        $producto->save();
+        // dd($request, 'Validacion pasada con exito');
+        $producto->my_update($request);
+        Alert('Éxito', 'El Producto se ha actualizado', 'success')->showConfirmButton();
         return redirect()->route('producto.index');
     }
 

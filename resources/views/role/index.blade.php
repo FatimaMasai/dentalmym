@@ -58,3 +58,4 @@
  
          
 @endsection
+<!-- php artisan make:request Persona/StoreRequest  -->

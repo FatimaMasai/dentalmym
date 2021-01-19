@@ -5,6 +5,7 @@
     <div class="br-section-wrapper">
         <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Agregar Proveedor</h6>
         <p class="mg-b-30 tx-gray-600"> </p>
+        @include('proveedor.error')
         <form action="{{route('proveedor.store')}}" method="post">
             @csrf
             <div class="form-layout form-layout-1">

@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/servicio/exportar', [ServicioController::class, 'exportar'])->name('servicio.exportar');
     Route::get('/servicio/exportar_excel', [ServicioController::class, 'exportar_excel'])->name('servicio.exportar_excel'); 
     Route::get('/servicio/import_excel', [ServicioController::class, 'import_excel'])->name('servicio.import_excel'); 
-    Route::get('/venta/exportar', [VentaController::class, 'exportar'])->name('venta.exportar'); 
+    Route::get('/venta/exportar', [VentaController::class, 'exportar'])->name('venta.exportar');  
 
     Route::get('/venta/finalizar_venta', [VentaController::class, 'finalizar_venta'])->name('venta.finalizar_venta'); 
     Route::get('/venta/reporte_venta', [VentaController::class, 'reporte_venta'])->name('venta.reporte_venta'); 
@@ -52,8 +52,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('grafico', [ServicioController::class, 'grafico'])->name('grafico');
 
     Route::get('/venta/{id}/reporte_venta_id', [VentaController::class, 'reporte_venta_id'])->name('venta.reporte_venta_id');  
-    
-
+ 
     Route::resource('/persona', PersonaController::class); 
     Route::resource('/paciente', PacienteController::class);
     Route::resource('/doctor', DoctorController::class); 

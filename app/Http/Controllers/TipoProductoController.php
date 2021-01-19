@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TipoProducto;
+use App\Http\Requests\TipoProducto\StoreRequest;
+use App\Http\Requests\TipoProducto\UpdateRequest;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class TipoProductoController extends Controller
 {
     /**
@@ -33,10 +37,11 @@ class TipoProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $tipoproducto= new TipoProducto($request->all());
         $tipoproducto->save();
+        Alert('Éxito', 'La Tipo de Producto se ha guardado', 'success')->showConfirmButton();
         return redirect()->route('tipoproducto.index');
     }
 
@@ -71,11 +76,19 @@ class TipoProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    // {
+    //     $tipoproducto = TipoProducto::find($id); 
+    //     $tipoproducto = $tipoproducto->fill($request->all());
+    //     $tipoproducto->save();
+    //     return redirect()->route('tipoproducto.index');
+    // }
+
+    public function update(UpdateRequest $request, TipoProducto $tipoproducto)
     {
-        $tipoproducto = TipoProducto::find($id); 
-        $tipoproducto = $tipoproducto->fill($request->all());
-        $tipoproducto->save();
+        // dd($request, 'Validacion pasada con exito');
+        $tipoproducto->my_update($request);
+        Alert('Éxito', 'La Tipo de Producto se ha actualizado', 'success')->showConfirmButton();
         return redirect()->route('tipoproducto.index');
     }
 

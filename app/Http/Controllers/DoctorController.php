@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Persona;
-
+use App\Http\Requests\Doctor\StoreRequest;
+use App\Http\Requests\Doctor\UpdateRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 class DoctorController extends Controller
 {
     /**
@@ -36,10 +38,11 @@ class DoctorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $doctor = new Doctor($request->all());
         $doctor->save();
+        Alert('Éxito', 'El Doctor se ha guardado', 'success')->showConfirmButton();
         return redirect()->route('doctor.index');
     }
 
@@ -75,13 +78,21 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    // {
+    //     $doctor = Doctor::find($id);
+    //     $doctor=$doctor->fill($request->all());
+    //     $doctor->save();
+    //     return redirect()->route('doctor.index');
+    // }
+    public function update(UpdateRequest $request, Doctor $doctor)
     {
-        $doctor = Doctor::find($id);
-        $doctor=$doctor->fill($request->all());
-        $doctor->save();
+        // dd($request, 'Validacion pasada con exito');
+        $doctor->my_update($request);
+        Alert('Éxito', 'El Doctor se ha actualizado', 'success')->showConfirmButton();
         return redirect()->route('doctor.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

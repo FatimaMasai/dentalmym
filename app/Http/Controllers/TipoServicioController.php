@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; 
 use App\Models\TipoServicio;
+use App\Http\Requests\TipoServicio\StoreRequest;
+use App\Http\Requests\TipoServicio\UpdateRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TipoServicioController extends Controller
 {
@@ -34,10 +37,11 @@ class TipoServicioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $tiposervicio= new TipoServicio($request->all());
         $tiposervicio->save();
+        Alert('Éxito', 'La Tipo de Servicio se ha guardado', 'success')->showConfirmButton();
         return redirect()->route('tiposervicio.index');
     }
 
@@ -72,13 +76,22 @@ class TipoServicioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    // {
+    //     $tiposervicio = TipoServicio::find($id); 
+    //     $tiposervicio = $tiposervicio->fill($request->all());
+    //     $tiposervicio->save();
+    //     return redirect()->route('tiposervicio.index');
+    // }
+
+    public function update(UpdateRequest $request, TipoServicio $tiposervicio)
     {
-        $tiposervicio = TipoServicio::find($id); 
-        $tiposervicio = $tiposervicio->fill($request->all());
-        $tiposervicio->save();
+        // dd($request, 'Validacion pasada con exito');
+        $tiposervicio->my_update($request);
+        Alert('Éxito', 'La Tipo de Servicio se ha actualizado', 'success')->showConfirmButton();
         return redirect()->route('tiposervicio.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

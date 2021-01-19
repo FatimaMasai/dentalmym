@@ -13,11 +13,24 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="x_card_code" class="control-label mb-1">  PACIENTE</label>
-                                <select name="id_persona" value="{{$paciente->persona->nombre}}"  id="id_persona" class="form-control"> 
-                                    @foreach($persona as $person)
-                                      <option value="{{$person->id}}">{{$person->nombre}} {{$person->apellido_pat}} {{$person->apellido_mat}} </option>
+                                
+                               <select value="{{$paciente->persona->nombre}}" name="id_persona" id="id_persona" class="form-control"> 
+                                    @foreach($persona as $per)
+                                      <option value="{{$per->id}}">{{$per->nombre}} {{$per->apellido_paterno}} {{$per->apellido_materno}} </option>
                                     @endforeach 
                                 </select> 
+
+                                <!-- <select name="id_persona" id="id_persona" class="form-control"> 
+                                    @foreach($persona as $per)
+                                        @if($per->id==$paciente->id_persona)
+                                        <option value="{{$paciente->persona->nombre}}" selected>{{$per->nombre}} {{$per->apellido_pat}} {{$per->apellido_mat}} </option>
+                                        @else
+                                        <option value="{{$paciente->persona->nombre}}">{{$per->nombre}} {{$per->apellido_pat}} {{$per->apellido_mat}} </option>
+                                        @endif
+                                    @endforeach 
+                                </select>  -->
+
+
                         </div>
                     </div>
                     <div class="col-lg-4">

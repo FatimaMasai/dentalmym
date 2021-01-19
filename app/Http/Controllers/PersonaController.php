@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Persona;
+use App\Http\Requests\Persona\StoreRequest;
+use App\Http\Requests\Persona\UpdateRequest;
 
 class PersonaController extends Controller
 {
@@ -35,14 +37,14 @@ class PersonaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $persona= new persona($request->all());
         $persona->save();
         Alert('Éxito', 'La Persona se ha guardado', 'success')->showConfirmButton();
         return redirect()->route('persona.index');
 
-    }
+    } 
 
     /**
      * Display the specified resource.
@@ -76,14 +78,22 @@ class PersonaController extends Controller
      * @return \Illuminate\Http\Response
      */
   
-    public function update(Request $request, $id)
-    {
-        $persona = Persona::find($id); 
-        $persona = $persona->fill($request->all());
-        $persona->save();
-        return redirect()->route('persona.index');
+    // public function update(UpdateRequest $request, $id)
+    // {
+    //     $persona = Persona::find($id); 
+    //     $persona = $persona->fill($request->all());
+    //     $persona->save();
+    //     return redirect()->route('persona.index');
 
+    // }
+    public function update(UpdateRequest $request, Persona $persona)
+    {
+        // dd($request, 'Validacion pasada con exito');
+        $persona->my_update($request);
+        Alert('Éxito', 'La Persona se ha actualizado', 'success')->showConfirmButton();
+        return redirect()->route('persona.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -95,7 +105,7 @@ class PersonaController extends Controller
     {
         $persona = persona::find($id);
         $persona->update(['estado'=>0]);
-        Alert('Éxito', 'El rol eliminado', 'success')->showConfirmButton();
+        Alert('Éxito', 'Registro eliminado', 'success')->showConfirmButton();
         return redirect()->route('persona.index');
     }
 }

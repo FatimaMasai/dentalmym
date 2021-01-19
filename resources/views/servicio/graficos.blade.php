@@ -18,7 +18,7 @@
         ]);
 
         var options = {
-          title: 'TOTAL DE PRODUCTOS EN EL INVENTARIO'
+          title: 'TOTAL DE SERVICIOS VENDIDOS'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

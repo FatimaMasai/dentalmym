@@ -10,6 +10,10 @@ use Carbon\Carbon;
 use App\Exports\ServicioExport; 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ServicioImport; 
+use App\Http\Requests\Servicio\StoreRequest;
+use App\Http\Requests\Servicio\UpdateRequest;
+use RealRashid\SweetAlert\Facades\Alert;
+
  
 class ServicioController extends Controller
 {
@@ -69,10 +73,11 @@ class ServicioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $servicio = new Servicio($request->all());
         $servicio->save();
+        Alert('Éxito', 'El Nuevo Servicio se ha guardado', 'success')->showConfirmButton();
         return redirect()->route('servicio.index');
     }
 
@@ -108,11 +113,19 @@ class ServicioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    // {
+    //     $servicio = Servicio::find($id);
+    //     $servicio=$servicio->fill($request->all());
+    //     $servicio->save();
+    //     return redirect()->route('servicio.index');
+    // }
+
+    public function update(UpdateRequest $request, Servicio $servicio)
     {
-        $servicio = Servicio::find($id);
-        $servicio=$servicio->fill($request->all());
-        $servicio->save();
+        // dd($request, 'Validacion pasada con exito');
+        $servicio->my_update($request);
+        Alert('Éxito', 'El Servicio se ha actualizado', 'success')->showConfirmButton();
         return redirect()->route('servicio.index');
     }
 

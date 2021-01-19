@@ -8,10 +8,12 @@ use App\Models\Paciente;
 use App\Models\Servicio; 
 use App\Models\Detalle; 
 use PDF;
-use Carbon\Carbon;
-
+use Carbon\Carbon;   
+use Luecano\NumeroALetras\NumeroALetras;
 class VentaController extends Controller
 {
+     
+     
     public function delete($id,$venta_id)
     {
         $detalle=Detalle::findOrFail($id);
@@ -23,16 +25,17 @@ class VentaController extends Controller
     {
 
         $venta = Venta::find($id);
-        $detalle = Detalle::where('id_venta',$id)->get();
-        $total_pagar=0;
+        $detalle = Detalle::where('id_venta',$id)->get(); 
+        $total_pagar=0;    
         foreach($detalle as $detall)
         {
-            $total_pagar += $detall->cantidad * $detall->servicio->precio;
+            $total_pagar += $detall->cantidad * $detall->servicio->precio;   
         }
         $PDF = PDF::loadView('venta/exportar_venta_id',compact('venta', 'detalle', 'total_pagar'));
         return $PDF->stream('reporte.pdf');
         
     }  
+
     
 
     public function exportar()

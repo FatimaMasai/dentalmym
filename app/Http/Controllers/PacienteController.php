@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
 use App\Models\Persona;
+use App\Http\Requests\Paciente\StoreRequest;
+use App\Http\Requests\Paciente\UpdateRequest;
 
 class PacienteController extends Controller
 {
@@ -36,10 +38,11 @@ class PacienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $paciente = new Paciente($request->all());
         $paciente->save();
+        Alert('Éxito', 'El Paciente se ha guardado', 'success')->showConfirmButton();
         return redirect()->route('paciente.index');
     }
 
@@ -75,14 +78,22 @@ class PacienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    // public function update(Request $request, $id)
+    // {
 
-        $paciente = Paciente::find($id);
-        $paciente=$paciente->fill($request->all());
-        $paciente->save();
+    //     $paciente = Paciente::find($id);
+    //     $paciente=$paciente->fill($request->all());
+    //     $paciente->save();
+    //     return redirect()->route('paciente.index');
+    // }
+
+    public function update(UpdateRequest $request, Paciente $paciente)
+    {
+        // dd($request, 'Validacion pasada con exito');
+        $paciente->my_update($request);
+        Alert('Éxito', 'La paciente se ha actualizado', 'success')->showConfirmButton();
         return redirect()->route('paciente.index');
-    }
+    } 
 
     /**
      * Remove the specified resource from storage.

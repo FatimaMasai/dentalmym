@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Proveedor;
 use App\Models\Persona;
-
+use App\Http\Requests\Proveedor\StoreRequest;
+use App\Http\Requests\Proveedor\UpdateRequest;
 class ProveedorController extends Controller
 {
     /**
@@ -36,7 +37,7 @@ class ProveedorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $proveedor = new Proveedor($request->all());
         $proveedor->save();
@@ -75,14 +76,22 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    // {
+    //     $proveedor = Proveedor::find($id);
+    //     $proveedor=$proveedor->fill($request->all());
+    //     $proveedor->save();
+    //     return redirect()->route('proveedor.index');
+    // }
+    public function update(UpdateRequest $request, Proveedor $proveedor)
     {
-        $proveedor = Proveedor::find($id);
-        $proveedor=$proveedor->fill($request->all());
-        $proveedor->save();
+        // dd($request, 'Validacion pasada con exito');
+        $proveedor->my_update($request);
+        Alert('Éxito', 'El proveedor se ha actualizado', 'success')->showConfirmButton();
         return redirect()->route('proveedor.index');
     }
 
+    
     /**
      * Remove the specified resource from storage.
      *

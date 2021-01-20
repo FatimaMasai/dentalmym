@@ -68,7 +68,9 @@ class VentaController extends Controller
     public function create()
     {
         $paciente = Paciente::where('estado',1)->orderBy('id','Desc')->get();  
-        return view('venta.create')->with('paciente', $paciente);
+        $servicios = Servicio::where('estado', 1)->orderBy('nombre','ASC')->get();
+        $acumulado = 0;  
+        return view('venta.create', compact('paciente', 'servicios', 'acumulado'));
     }
 
     /**
@@ -80,8 +82,29 @@ class VentaController extends Controller
     public function store(Request $request)
     {
         $venta = new venta($request->all());
+        
+        //dd($request->subtotal);
+        $detalles = $request->id_servicio;
         $venta->save();
-        return redirect()->route('venta.edit', $venta->id);
+        foreach ($detalles as $key => $value) {
+            $detalle = new Detalle([
+                'id_venta' => $venta->id,
+                'id_servicio' => $request->id_servicio[$key],
+                'cantidad' => $request->cantidad[$key],
+                'subtotal' => $request->subtotal[$key],
+            ]);
+            $detalle->save();
+        }
+
+        
+        return redirect()->route('venta.show', $venta->id);
+    }
+
+    public function agregar_servicio(Request $request, $servicio_id, $cantidad, $acumulado){
+        $servicio = Servicio::find($servicio_id);
+        $subtotal = $servicio->precio * $cantidad;
+        $acumulado = $acumulado + $subtotal;
+        return view('venta.aside.detalleserviciofila', compact('servicio', 'cantidad', 'subtotal', 'acumulado'))->render();
     }
 
     /**

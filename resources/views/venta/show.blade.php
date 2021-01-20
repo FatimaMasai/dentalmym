@@ -53,7 +53,7 @@
                     <a href="{{route('venta.edit',$venta->id)}}"><button class="btn btn-primary">Editar</button></a>
                 </div> 
                 <div class="col-md-1">
-                    <a href="{{route('venta.reporte_venta_id', $venta->id)}}"><button class="btn btn-danger">PDF</button></a>
+                    <a target="_blank" href="{{route('venta.reporte_venta_id', $venta->id)}}"><button class="btn btn-danger">PDF</button></a>
                 </div> 
                
             </div> 

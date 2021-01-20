@@ -14,7 +14,8 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\DetalleController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\RoleController;
-
+use App\Models\Detalle;
+use App\Models\Venta;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/servicio/grafico', [ServicioController::class, 'grafico'])->name('grafico'); 
     Route::get('grafico', [ServicioController::class, 'grafico'])->name('grafico');
 
+
     Route::get('/venta/{id}/reporte_venta_id', [VentaController::class, 'reporte_venta_id'])->name('venta.reporte_venta_id');  
+
+    Route::get('/venta/agregar_servicio/{servicio_id}/{cantidad}/{acumulado}', [VentaController::class, 'agregar_servicio'])->name('venta.agregar_servicio'); 
  
     Route::resource('/persona', PersonaController::class); 
     Route::resource('/paciente', PacienteController::class);

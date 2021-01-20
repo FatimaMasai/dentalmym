@@ -89,4 +89,6 @@ class DetalleController extends Controller
     {
         //
     }
+
+    
 }

@@ -19,6 +19,7 @@
       
     </div>    
     @include('theme.include.footer')
+    @yield('localscript')
   </body>
 </html>
 

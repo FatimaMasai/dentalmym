@@ -23,7 +23,8 @@
         <strong> TOTAL:</strong>
     </td>
     <td class="text-right">
-        <input id="acumulado" type="hidden" name="acumulado[]" value="{{$acumulado}}"><strong>{{$acumulado}}</strong>
-        
+        <input id="total" type="hidden" name="total" value="{{$total}}">
+        <strong>{{$total}}</strong>
+
     </td>
 </tr>

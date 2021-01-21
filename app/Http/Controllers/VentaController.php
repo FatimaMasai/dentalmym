@@ -4,46 +4,48 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Venta;
-use App\Models\Paciente; 
-use App\Models\Servicio; 
-use App\Models\Detalle; 
+use App\Models\Paciente;
+use App\Models\Servicio;
+use App\Models\Detalle;
+use App\Models\Pago;
+use App\Models\TipoVenta;
 use PDF;
-use Carbon\Carbon;   
+use Carbon\Carbon;
 use Luecano\NumeroALetras\NumeroALetras;
 class VentaController extends Controller
 {
-     
-     
+
+
     public function delete($id,$venta_id)
     {
         $detalle=Detalle::findOrFail($id);
-        $detalle->delete(); 
+        $detalle->delete();
         return redirect()->route('venta.edit');
     }
-    
+
     public function reporte_venta_id($id)
     {
 
         $venta = Venta::find($id);
-        $detalle = Detalle::where('id_venta',$id)->get(); 
-        $total_pagar=0;    
+        $detalle = Detalle::where('id_venta',$id)->get();
+        $total_pagar=0;
         foreach($detalle as $detall)
         {
-            $total_pagar += $detall->cantidad * $detall->servicio->precio;   
+            $total_pagar += $detall->cantidad * $detall->servicio->precio;
         }
         $PDF = PDF::loadView('venta/exportar_venta_id',compact('venta', 'detalle', 'total_pagar'));
         return $PDF->stream('reporte.pdf');
-        
-    }  
 
-    
+    }
+
+
 
     public function exportar()
     {
         $venta = venta::all();
         $detalle = Detalle::all();
         $fecha_actual = Carbon::now();
-        view()->share('venta', $venta); 
+        view()->share('venta', $venta);
         view()->share('detalle', $detalle);
         view()->share('fecha_actual', $fecha_actual);
         $pdf = PDF::loadView('venta.exportar', [$venta, $fecha_actual]);
@@ -55,7 +57,7 @@ class VentaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
+    {
         $venta= venta::where('estado',1)->orderBy('id', 'Desc')->paginate(10);
          return view('venta.index')->with('venta', $venta);
     }
@@ -67,10 +69,11 @@ class VentaController extends Controller
      */
     public function create()
     {
-        $paciente = Paciente::where('estado',1)->orderBy('id','Desc')->get();  
+        $paciente = Paciente::where('estado',1)->orderBy('id','Desc')->get();
         $servicios = Servicio::where('estado', 1)->orderBy('nombre','ASC')->get();
-        $acumulado = 0;  
-        return view('venta.create', compact('paciente', 'servicios', 'acumulado'));
+        $tipoventas = TipoVenta::where('estado', 1)->orderBy('nombre','ASC')->get();
+        $total = 0;
+        return view('venta.create', compact('paciente', 'servicios', 'tipoventas', 'total'));
     }
 
     /**
@@ -82,7 +85,7 @@ class VentaController extends Controller
     public function store(Request $request)
     {
         $venta = new venta($request->all());
-        
+
         //dd($request->subtotal);
         $detalles = $request->id_servicio;
         $venta->save();
@@ -96,15 +99,23 @@ class VentaController extends Controller
             $detalle->save();
         }
 
-        
+        $pago = new Pago($request->all());
+        $pago->id_venta = $venta->id;
+        $pago->saldoanterior = $venta->total;
+
+
+        $pago->save();
+
+
+
         return redirect()->route('venta.show', $venta->id);
     }
 
-    public function agregar_servicio(Request $request, $servicio_id, $cantidad, $acumulado){
+    public function agregar_servicio(Request $request, $servicio_id, $cantidad, $total){
         $servicio = Servicio::find($servicio_id);
         $subtotal = $servicio->precio * $cantidad;
-        $acumulado = $acumulado + $subtotal;
-        return view('venta.aside.detalleserviciofila', compact('servicio', 'cantidad', 'subtotal', 'acumulado'))->render();
+        $total = $total + $subtotal;
+        return view('venta.aside.detalleserviciofila', compact('servicio', 'cantidad', 'subtotal', 'total'))->render();
     }
 
     /**
@@ -114,7 +125,7 @@ class VentaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {        
+    {
         $venta = Venta::find($id);
         $detalle = Detalle::where('id_venta', $id)->get();
         $total_pagar = 0;
@@ -126,7 +137,7 @@ class VentaController extends Controller
         ->with('venta', $venta)
         ->with('detalle', $detalle)
         ->with('total_pagar', $total_pagar);
-     
+
     }
 
     /**
@@ -138,9 +149,9 @@ class VentaController extends Controller
     public function edit($id)
     {
         $venta = venta::find($id);
-        
-        $servicio = Servicio::where('estado',1)->orderby('id', 'Desc')->get(); 
-        $nombre_paciente = $venta->paciente->persona->nombre.' '.$venta->paciente->persona->apellido_pat;        
+
+        $servicio = Servicio::where('estado',1)->orderby('id', 'Desc')->get();
+        $nombre_paciente = $venta->paciente->persona->nombre.' '.$venta->paciente->persona->apellido_pat;
         $detalle = Detalle::where('id_venta', $id)->get();
         $total_pagar = 0;
         foreach($detalle as $detall)
@@ -181,5 +192,5 @@ class VentaController extends Controller
         $venta->update(['estado'=>0]);
         return redirect()->route('venta.index');
     }
-    
+
 }

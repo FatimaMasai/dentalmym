@@ -57,6 +57,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/venta/agregar_servicio/{servicio_id}/{cantidad}/{total}', [VentaController::class, 'agregar_servicio'])->name('venta.agregar_servicio');
 
+    Route::get('/pago/detalle_pagos/{id_venta}/', [PagoController::class, 'detalle_pagos'])->name('pago.detalle_pagos');
+
     Route::resource('/persona', PersonaController::class);
     Route::resource('/paciente', PacienteController::class);
     Route::resource('/doctor', DoctorController::class);

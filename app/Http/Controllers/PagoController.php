@@ -26,8 +26,9 @@ class PagoController extends Controller
      */
     public function create()
     {
-        $venta = Venta::where('estado',1)->orderBy('id','Desc')->get();  
-        return view('pago.create')->with('venta', $venta);
+        $ventas = Venta::where('estado',1)->orderBy('id','Desc')->get();
+        $pagos = Pago::where('estado',-1)->orderBy('created_at','ASC')->get();
+        return view('pago.create', compact('ventas', 'pagos'));
     }
 
     /**
@@ -40,7 +41,17 @@ class PagoController extends Controller
     {
         $pago = new pago($request->all());
         $pago->save();
-        return redirect()->route('pago.edit', $pago->id);
+        $venta = Venta::find($pago->id_venta);
+        $venta->saldo = $pago->saldo;
+        $venta->save();
+        return redirect()->route('venta.show', $pago->id_venta);
+    }
+
+    public function detalle_pagos(Request $request, $id_venta){
+        $pagos = Pago::where('estado', 1)->where('id_venta', $id_venta)->orderBy('created_at','ASC')->get();
+        if ($request->ajax()){
+            return view('pago.aside.detallepagos', compact('pagos'))->render();
+        }
     }
 
     /**

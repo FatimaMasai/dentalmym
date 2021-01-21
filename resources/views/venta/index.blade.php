@@ -21,6 +21,7 @@
           <th class="wd-7p">PACIENTE</th>
           <th class="wd-7p">TOTAL</th>
           <th class="wd-7p">TIPO</th>
+          <th class="wd-7p">SALDO</th>
           <th class="wd-7p">FECHA</th>
           <th class="wd-7p">ESTADO</th>
           <th class="wd-7p">ACCION</th>
@@ -33,6 +34,7 @@
           <td>{{$vent->paciente->persona->nombre}}</td>
           <td>{{$vent->total}}</td>
           <td>{{$vent->tipoventa->nombre}}</td>
+          <td>{{$vent->saldo}}</td>
           <td>{{$vent->created_at}}</td>
           <td>{{$vent->estado}}</td>
           <td>
